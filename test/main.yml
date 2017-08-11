@@ -7,9 +7,18 @@
       - name: ansible_deps_host_1
         image: "chrismeyers/centos6"
       - name: ansible_deps_host_2
-        image: "chrismeyers/ubuntu12.04"
+        image: "chrismeyers/centos7"
       - name: ansible_deps_host_3
+        image: "chrismeyers/ubuntu12.04"
+      - name: ansible_deps_host_4
         image: "ubuntu-upstart:14.04"
+      - name: ansible_deps_host_5
+        image: "nolte/ubuntu-upstart:16.04"
+      - name: ansible_deps_host_6
+        image: "nolte/ubuntu-upstart:17.04"
+      - name: ansible_deps_host_7
+        image: "nolte/ubuntu-upstart:17.10"
+
   roles:
     - { role: provision_docker, provision_docker_company: 'ansible', provision_docker_inventory: "{{ inventory }}" }
 
@@ -19,11 +28,3 @@
     git_dir: "/tmp/ansible"
   roles:
     - { role: ansible_deps }
-  tasks:
-    - name: Clone ansible
-      git:
-        repo: "https://github.com/ansible/ansible.git"
-        dest: "{{ git_dir }}"
-    - name: Invoke ansible in hacking mode
-      shell: "cd {{ git_dir }} && . hacking/env-setup && ansible --version && ansible-playbook --version"
-

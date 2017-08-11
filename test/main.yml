@@ -27,4 +27,4 @@
   vars:
     git_dir: "/tmp/ansible"
   roles:
-    - { role: ansible_deps }
+    - { role: ansible_role-playground }

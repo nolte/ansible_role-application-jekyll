@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/chrismeyersfsu/role-ansible_deps.svg)](https://travis-ci.org/chrismeyersfsu/role-ansible_deps)
+[![Build Status](https://travis-ci.org/nolte/ansible_role-playground.svg?branch=master)](https://travis-ci.org/nolte/ansible_role-playground)
 
 ansible_deps
 =========

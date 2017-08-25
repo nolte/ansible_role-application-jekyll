@@ -5,13 +5,15 @@
 
 - name: install the latest version of ruby
   package:
-    name: ruby
+    name: "{{item}}"
     state: latest
+  with_items:
+    - ruby
+    - rubygems
 
 - gem:
-    name: jekyll
+    name: "{{item}}"
     state: latest
-
-- gem:
-    name: bundler
-    state: latest
+  with_items:
+    - jekyll
+    - bundler

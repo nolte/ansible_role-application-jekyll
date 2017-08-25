@@ -3,18 +3,17 @@
 - debug:
     msg: "Ansible Host {{ ansible_hostname }} with {{ansible_os_family}} version {{ansible_distribution_version}}"
 
-- name: install the latest version of ruby
-  package:
-    name: "ruby-2.4.1"
-    state: present
-   
-
+  
 - name: install the latest version of ruby
   package:
     name: "{{item}}"
     state: latest
   with_items:
     - rubygems
+    - ruby-full
+    - ruby-dev
+    - build-essential
+
 
 - gem:
     name: "{{item}}"

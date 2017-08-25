@@ -5,10 +5,14 @@
 
 - name: install the latest version of ruby
   package:
+    name: "ruby"
+    state: 2.3.1
+
+- name: install the latest version of ruby
+  package:
     name: "{{item}}"
     state: latest
   with_items:
-    - ruby
     - rubygems
 
 - gem:

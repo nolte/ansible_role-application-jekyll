@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/nolte/ansible_role-playground.svg?branch=master)](https://travis-ci.org/nolte/ansible_role-playground)
+[![Build Status](https://travis-ci.org/nolte/ansible_role-application-jekyll.svg?branch=master)](https://travis-ci.org/nolte/ansible_role-application-jekyll)
 
 ansible_deps
 =========

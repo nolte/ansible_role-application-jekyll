@@ -2,3 +2,16 @@
 
 - debug:
     msg: "Ansible Host {{ ansible_hostname }} with {{ansible_os_family}} version {{ansible_distribution_version}}"
+
+- name: install the latest version of ruby
+  package:
+    name: ruby
+    state: latest
+
+- gem:
+    name: jekyll
+    state: latest
+
+- gem:
+    name: bundler
+    state: latest

@@ -5,7 +5,7 @@
 
 - name: install the latest version of ruby
   package:
-    name: "ruby-2.3.1"
+    name: "ruby-2.4.1"
     state: present
    
 

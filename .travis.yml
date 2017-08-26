@@ -7,7 +7,12 @@ services:
   - docker
 env:
   matrix:
+    - container="chrismeyers/centos6"
     - container="chrismeyers/centos7"
+    - container="chrismeyers/ubuntu12.04"
+    - container="ubuntu-upstart:14.04"
+    - container="nolte/ubuntu-upstart:16.04"
+    - container="nolte/ubuntu-upstart:17.04"
     - container="nolte/ubuntu-upstart:17.10"
   global:
     - PATH="/usr/bin:$PATH"

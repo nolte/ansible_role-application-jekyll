@@ -1,11 +1,15 @@
 ---
 
 ## Start Preconditions for the ruby role
-- name: check curl are presente
+- name: check base commands are presente
   become: yes
   package:
-    name: curl
+    name: "{{item}}"
     state: latest
+  with_items:
+    - curl
+    - which
+
 
 - name: install dirmngr
   become: yes
@@ -16,7 +20,7 @@
     - dirmngr
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-## End Preconditions for the ruby role 
+## End Preconditions for the ruby role
 
 - name: install ruby
   include_role:

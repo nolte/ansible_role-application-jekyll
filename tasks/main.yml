@@ -3,7 +3,7 @@
 
 - name: missing on centos6 ...
   package:
-    name: "unzip"
+    name: "tar"
     state: latest
 
 - name: install ruby

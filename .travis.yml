@@ -6,6 +6,14 @@ python:
 services:
   - docker
 env:
+  matrix:
+    - container="chrismeyers/centos6"
+    - container="chrismeyers/centos7"
+    - container="chrismeyers/ubuntu12.04"
+    - container="ubuntu-upstart:14.04"
+    - container="nolte/ubuntu-upstart:16.04"
+    - container="nolte/ubuntu-upstart:17.04"
+    - container="nolte/ubuntu-upstart:17.10"
   global:
     - PATH="/usr/bin:$PATH"
 
@@ -30,5 +38,4 @@ script:
   # Ensure any invocation of ansible-playbook (i.e. sudo) results in host_key_checking disabled
   - sudo ansible all -i "127.0.0.1," -m lineinfile -a "regexp=^#host_key_checking dest=/etc/ansible/ansible.cfg line='host_key_checking = False'" -c local
   - ansible-playbook -i test/inventory test/main.yml --syntax-check
-  - sudo ansible-playbook -i test/inventory test/main.yml
-
+  - sudo ansible-playbook -i test/inventory test/main.yml  --extra-vars "container=$container"

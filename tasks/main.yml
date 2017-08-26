@@ -1,15 +1,44 @@
 ---
 
-- name: install the latest ruby dependencies for jekyll
+## Start Preconditions for the ruby role
+- name: check base commands are presente
   become: yes
   package:
     name: "{{item}}"
     state: latest
   with_items:
-    - rubygems
-    - ruby-full
-    - ruby-dev
-    - build-essential
+    - curl
+    - tar
+
+- name: install which
+  become: yes
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - which
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install dirmngr
+  become: yes
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - dirmngr
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+## End Preconditions for the ruby role
+
+- name: install ruby
+  include_role:
+    name: rvm_io.ruby
+  vars:
+    rvm1_rubies: ['ruby-2.4.1']
+    rvm1_install_flags: '--auto-dotfiles'     # Remove --user-install from defaults
+    rvm1_install_path: /usr/local/rvm         # Set to system location
+    rvm1_user: root                            # Need root account to access system location
+
 
 - name: Install gem dependencies
   gem:

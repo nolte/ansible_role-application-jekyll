@@ -1,2 +1,4 @@
 - src: chrismeyersfsu.provision_docker
   name: provision_docker
+- src: rvm_io.ruby
+  name: rvm_io.ruby

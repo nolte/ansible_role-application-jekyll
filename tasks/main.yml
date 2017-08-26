@@ -1,23 +1,20 @@
 ---
 
-- debug:
-    msg: "Ansible Host {{ ansible_hostname }} with {{ansible_os_family}} version {{ansible_distribution_version}}"
-
-  
-- name: install the latest version of ruby
+- name: install the latest ruby dependencies for jekyll
+  become: yes
   package:
     name: "{{item}}"
     state: latest
   with_items:
     - rubygems
-    - ruby-full
-    - ruby-dev
-    - build-essential
+    - ruby-full
+    - ruby-dev
+    - build-essential
 
-
-- gem:
+- name: Install gem dependencies
+  gem:
     name: "{{item}}"
     state: latest
   with_items:
-    - jekyll
     - bundler
+    - jekyll

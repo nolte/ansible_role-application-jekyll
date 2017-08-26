@@ -6,8 +6,9 @@ python:
 services:
   - docker
 env:
-  - container="chrismeyers/centos7"
-  - container="nolte/ubuntu-upstart:17.10"
+  matrix:
+    - container="chrismeyers/centos7"
+    - container="nolte/ubuntu-upstart:17.10"
   global:
     - PATH="/usr/bin:$PATH"
 

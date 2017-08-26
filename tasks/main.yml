@@ -8,7 +8,6 @@
     state: latest
   with_items:
     - curl
-    - which
 
 
 - name: install dirmngr

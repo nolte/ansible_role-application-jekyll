@@ -1,2 +1,4 @@
 - src: chrismeyersfsu.provision_docker
   name: provision_docker
+- src: geerlingguy.ruby
+  name: geerlingguy.ruby  

@@ -4,14 +4,14 @@
   gather_facts: false
   vars:
     inventory:
-   #   - name: ansible_deps_host_1
-  #      image: "chrismeyers/centos6"
- #     - name: ansible_deps_host_2
-   #     image: "chrismeyers/centos7"
-#      - name: ansible_deps_host_3
- #       image: "chrismeyers/ubuntu12.04"
-  #    - name: ansible_deps_host_4
-  #      image: "ubuntu-upstart:14.04"
+      - name: ansible_deps_host_1
+        image: "chrismeyers/centos6"
+      - name: ansible_deps_host_2
+        image: "chrismeyers/centos7"
+      - name: ansible_deps_host_3
+        image: "chrismeyers/ubuntu12.04"
+      - name: ansible_deps_host_4
+        image: "ubuntu-upstart:14.04"
       - name: ansible_deps_host_5
         image: "nolte/ubuntu-upstart:16.04"
       - name: ansible_deps_host_6

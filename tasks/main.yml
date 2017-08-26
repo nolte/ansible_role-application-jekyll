@@ -1,20 +1,15 @@
 ---
 
-- name: install the latest ruby dependencies for jekyll
-  become: yes
-  package:
-    name: "{{item}}"
-    state: latest
-  with_items:
-    - rubygems
-    - ruby-full
-    - ruby-dev
-    - build-essential
 
-- name: Install gem dependencies
-  gem:
-    name: "{{item}}"
+- name: missing on centos6 ...
+  package:
+    name: "unzip"
     state: latest
-  with_items:
-    - bundler
-    - jekyll
+
+- name: install ruby
+  include_role:
+    name: geerlingguy.ruby
+  vars:
+    ruby_install_from_source: true
+    ruby_install_gems:
+      - jekyll

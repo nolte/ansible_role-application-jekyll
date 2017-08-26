@@ -18,7 +18,6 @@
         image: "nolte/ubuntu-upstart:17.04"
       - name: ansible_deps_host_7
         image: "nolte/ubuntu-upstart:17.10"
-
   roles:
     - { role: provision_docker, provision_docker_company: 'ansible', provision_docker_inventory: "{{ inventory }}" }
 

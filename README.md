@@ -1,30 +1,7 @@
 [![Build Status](https://travis-ci.org/nolte/ansible_role-application-jekyll.svg?branch=master)](https://travis-ci.org/nolte/ansible_role-application-jekyll)
 
-ansible_deps
+Install Jekyll
 =========
 
-Install needed packages to run ansible integration tests.
-
-Requirements
-------------
-
-None
-
-Role Variables
---------------
-
-None
-
-Dependencies
-------------
-
-None
-
-Example Playbook
-----------------
-
-
-License
--------
-
-BSD
+Requires: https://github.com/rvm/rvm1-ansible
+Jekyll: https://jekyllrb.com/  

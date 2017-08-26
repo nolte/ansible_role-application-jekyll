@@ -1,15 +1,37 @@
 ---
 
-
-- name: missing on centos6 ...
+## Start Preconditions for the ruby role
+- name: check curl are presente
+  become: yes
   package:
-    name: "tar"
+    name: curl
     state: latest
+
+- name: install dirmngr
+  become: yes
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - dirmngr
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+## End Preconditions for the ruby role 
 
 - name: install ruby
   include_role:
-    name: geerlingguy.ruby
+    name: rvm_io.ruby
   vars:
-    ruby_install_from_source: true
-    ruby_install_gems:
-      - jekyll
+    rvm1_rubies: ['ruby-2.4.1']
+    rvm1_install_flags: '--auto-dotfiles'     # Remove --user-install from defaults
+    rvm1_install_path: /usr/local/rvm         # Set to system location
+    rvm1_user: root                            # Need root account to access system location
+
+
+- name: Install gem dependencies
+  gem:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - bundler
+    - jekyll

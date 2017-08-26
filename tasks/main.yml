@@ -10,7 +10,7 @@
     - curl
     - tar
 
-- name: install dirmngr
+- name: install which
   become: yes
   package:
     name: "{{item}}"

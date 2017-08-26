@@ -26,6 +26,7 @@
     state: latest
   with_items:
     - dirmngr
+    - build-essential
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 ## End Preconditions for the ruby role
@@ -34,16 +35,15 @@
   include_role:
     name: rvm_io.ruby
   vars:
-    rvm1_rubies: ['ruby-2.4.1']
+    rvm1_rubies: ['{{ ruby_version }}']
     rvm1_install_flags: '--auto-dotfiles'     # Remove --user-install from defaults
-    rvm1_install_path: /usr/local/rvm         # Set to system location
+    rvm1_install_path: "{{ruby_install_path}}"         # Set to system location
     rvm1_user: root                            # Need root account to access system location
 
-
 - name: Install gem dependencies
+  #become: yes
   gem:
-    name: "{{item}}"
+    name: "jekyll"
     state: latest
-  with_items:
-    - bundler
-    - jekyll
+    user_install: no
+  register: jekyllinstall

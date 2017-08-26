@@ -1,2 +1,6 @@
 ---
 # defaults file for .
+jekyll_blog_base_dir: /tmp
+jekyll_blog_name: test_blog
+ruby_install_path: "/usr/local/rvm"
+ruby_version: "ruby-2.4.1"

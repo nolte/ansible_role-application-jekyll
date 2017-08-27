@@ -30,6 +30,11 @@
     - build-essential
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: "update-ca-trust force-enable"
+  command: "update-ca-trust force-enable"
+  become: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
 - name: "update ca-certificates"
   command: "update-ca-certificates"
   become: yes

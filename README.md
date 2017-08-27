@@ -3,5 +3,5 @@
 Install Jekyll
 =========
 
-Requires: https://github.com/rvm/rvm1-ansible
+Requires: https://github.com/rvm/rvm1-ansible   
 Jekyll: https://jekyllrb.com/  

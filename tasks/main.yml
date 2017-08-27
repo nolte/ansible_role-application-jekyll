@@ -17,6 +17,7 @@
     state: latest
   with_items:
     - which
+    - libcurl
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: install dirmngr
@@ -27,7 +28,6 @@
   with_items:
     - dirmngr
     - build-essential
-    - libcurl
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 ## End Preconditions for the ruby role

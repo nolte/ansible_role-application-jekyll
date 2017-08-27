@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Chris Meyers
-  description: install ansible integration test dependencies
+  author: nolte
+  description: prepare a system for use the jekyll blog
   company: Ansible
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -17,7 +17,7 @@ galaxy_info:
   min_ansible_version: 1.2
   #
   # Below are all platforms currently available. Just uncomment
-  # the ones that apply to your role. If you don't see your 
+  # the ones that apply to your role. If you don't see your
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
@@ -118,12 +118,9 @@ galaxy_info:
   # the platforms above, uncomment those that apply to your role.
   #
   galaxy_tags:
-    - testing
-    - integration
-    - ansible
-    - dependencies
+    - jekyll
+    - blog
 dependencies: []
   # List your role dependencies here, one per line.
   # Be sure to remove the '[]' above if you add dependencies
   # to this list.
-  

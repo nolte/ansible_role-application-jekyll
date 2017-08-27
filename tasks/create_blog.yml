@@ -6,3 +6,65 @@
   command: "jekyll new {{jekyll_blog_name}}"
   args:
     chdir: "{{jekyll_blog_base_dir}}"
+
+- set_fact:
+    jekyll_blog_dir: "{{jekyll_blog_base_dir}}/{{jekyll_blog_name}}"
+
+## Prepare the jekyll buildfile using rake
+
+- name: "Add build relevant gems to the jekyll gem"
+  blockinfile:
+    path: "{{jekyll_blog_dir}}/Gemfile"
+    marker: "## {mark} gems added by Ansible init role for build"
+    block: |
+      gem 'rake'
+      gem 'colorize'
+      gem 'rubocop'
+      gem 'html-proofer'
+      gem 'activesupport'
+      gem 'business'
+      gem 'stringex'
+      gem 'colorator'
+
+- name: "Add customized relevant gems to the jekyll gem"
+  blockinfile:
+    path: "{{jekyll_blog_dir}}/Gemfile"
+    marker: "## {mark} gems added by Ansible init role fpr customized"
+    insertafter: "group :jekyll_plugins do"
+    block: |3
+          gem 'jemoji'
+          gem 'jekyll-mentions'
+          gem 'jekyll-redirect-from'
+          gem 'jekyll-sitemap'
+          gem 'jekyll-paginate'
+          gem 'jekyll-time-to-read'
+          gem 'jekyll-watch'
+
+- name: "install required gems for the jekyll blog and build"
+  bundler:
+    state: present
+    gemfile: "{{jekyll_blog_dir}}/Gemfile"
+
+
+- template:
+    src: Rakefile.j2
+    dest: "{{jekyll_blog_dir}}/Rakefile"
+
+
+## Test The build
+- name: exec rake build
+  command: "bundle exec rake build"
+  args:
+    chdir: "{{jekyll_blog_dir}}"
+
+
+- name: exec rake html_proofer
+  command: "bundle exec rake html_proofer"
+  args:
+    chdir: "{{jekyll_blog_dir}}"
+
+
+- name: exec rake clean
+  command: "bundle exec rake clean"
+  args:
+    chdir: "{{jekyll_blog_dir}}"

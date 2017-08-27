@@ -27,7 +27,7 @@
   with_items:
     - dirmngr
     - build-essential
-    - libcurl-dev
+    - libcurl
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 ## End Preconditions for the ruby role

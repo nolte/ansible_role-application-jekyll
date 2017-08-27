@@ -30,6 +30,11 @@
     - build-essential
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: "update ca-certificates"
+  command: "update-ca-certificates"
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 ## End Preconditions for the ruby role
 
 - name: install ruby

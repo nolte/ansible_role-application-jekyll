@@ -1,0 +1,11 @@
+---
+- name: Run ansible_deps Tests
+  hosts: localhost
+  tasks:
+    - name: create test blog
+      include_role:
+        name: "../../ansible_role-application-jekyll"
+        tasks_from: create_blog
+      vars:
+        jekyll_blog_name: ansible-test-blog
+        jekyll_blog_base_dir: /tmp

@@ -43,4 +43,4 @@ script:
 notifications:
   webhooks:
     urls:
-      - https://api.keen.io/3.0/projects/$keen_project/events/$keen_collection?api_key=$keen_write_api_key
+      - http://lit-scrubland-83566.herokuapp.com/travis
